@@ -1,10 +1,9 @@
 # supa-ln
 
-Supabase with Lightning Network
+Supabase authentication
 
 Showcasing
 - Expo web
 - Supabase for authentication and database
 - Clean Architecture
 - Mobx state management
-- LND
