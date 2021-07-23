@@ -5,8 +5,8 @@ const stage = process.env.STAGE || "dev";
 const configs = {
   prod: {
     expo: {
-      name: "supa-ln",
-      slug: "supa-ln",
+      name: "supabasic-auth",
+      slug: "supabasic-auth",
       version: "0.0.1",
       orientation: "portrait",
       icon: "./assets/image/icon.png",
@@ -36,8 +36,8 @@ const configs = {
   },
   dev: {
     expo: {
-      name: "supa-ln",
-      slug: "supa-ln",
+      name: "supabasic-auth",
+      slug: "supabasic-auth",
       version: "0.0.1",
       orientation: "portrait",
       icon: "./assets/image/icon.png",
