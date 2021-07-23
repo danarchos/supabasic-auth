@@ -5,6 +5,8 @@ import * as React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Input from "../components/common/Input";
 import useAuthPresenter from "./authPresenter";
+import { Link } from "@react-navigation/native";
+import { authLinks } from "../navigation/NavigationService";
 
 const LoginScreen = observer(() => {
   const { setEmail, email, password, setPassword, loginError, performSignIn } =
@@ -35,6 +37,11 @@ const LoginScreen = observer(() => {
           "There was an error creating your account, please try again"
         </Text>
       )}
+      <Link to={`/${authLinks.SignUp}`}>
+        <Button>
+          <Text>Sign Up</Text>
+        </Button>
+      </Link>
     </View>
   );
 });
