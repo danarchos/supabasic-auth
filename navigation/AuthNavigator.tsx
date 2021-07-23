@@ -1,26 +1,21 @@
-import {
-  createStackNavigator,
-  StackScreenProps,
-} from "@react-navigation/stack";
-import * as React from "react";
-import { observer } from "mobx-react-lite";
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import navigationService, {
   AuthNavigatorParamList,
   authRoutes,
   authLinking,
 } from "./NavigationService";
-import { RootStackParamList } from "../types";
 import theme from "../styles/theme/navigationTheme";
+import { observer } from "mobx-react-lite";
 
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 
 const Stack = createStackNavigator<AuthNavigatorParamList>();
 
-const AuthNavigator = () => {
+export const AuthNavigator = observer(() => {
   return (
     <NavigationContainer
       theme={theme}
@@ -33,28 +28,4 @@ const AuthNavigator = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 20,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  link: {
-    marginTop: 15,
-    paddingVertical: 15,
-  },
-  linkText: {
-    fontSize: 14,
-    color: "#2e78b7",
-  },
 });
-
-export default AuthNavigator;

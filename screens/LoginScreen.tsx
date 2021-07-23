@@ -1,12 +1,40 @@
 import { StackScreenProps } from "@react-navigation/stack";
+import Button from "../components/common/Button";
 import { observer } from "mobx-react-lite";
 import * as React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import Input from "../components/common/Input";
+import useAuthPresenter from "./authPresenter";
 
 const LoginScreen = observer(() => {
+  const { setEmail, email, password, setPassword, loginError, performSignIn } =
+    useAuthPresenter();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>login</Text>
+      <Input
+        label="Email"
+        value={email}
+        onChangeText={(value) => setEmail(value)}
+      />
+      <Input
+        label="Password"
+        value={password}
+        onChangeText={(value) => setPassword(value)}
+        secureTextEntry
+      />
+      <Button
+        onPress={async () => {
+          await performSignIn();
+        }}
+      >
+        <Text>Submit</Text>
+      </Button>
+      {loginError && (
+        <Text style={styles.errorText}>
+          "There was an error creating your account, please try again"
+        </Text>
+      )}
     </View>
   );
 });
@@ -18,6 +46,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 20,
+  },
+  errorText: {
+    color: "red",
   },
   title: {
     fontSize: 20,

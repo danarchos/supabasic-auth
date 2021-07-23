@@ -1,24 +1,21 @@
-import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import "./init";
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import useColorScheme from "./hooks/useColorScheme";
+import RootNavigator from "./navigation/RootNavigator";
+import { SupabaseWrapper } from "./config/SupabaseInit";
 
 export default function App() {
-  const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
-
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
+  return (
+    <SupabaseWrapper>
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <RootNavigator />
         <StatusBar />
       </SafeAreaProvider>
-    );
-  }
+    </SupabaseWrapper>
+  );
 }

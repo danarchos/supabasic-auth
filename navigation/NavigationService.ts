@@ -8,10 +8,12 @@ export enum authRoutes {
 }
 
 export enum mainRoutes {
+  Main = "Main",
   UserOnboard = "UserOnboard",
   Dashboard = "Dashboard",
   AppView = "AppView",
   TestView = "TestView",
+  Settings = "Settings",
 }
 
 export const authLinks = {
@@ -20,8 +22,10 @@ export const authLinks = {
 };
 
 export const mainLinks = {
-  [mainRoutes.UserOnboard]: "onboard",
   [mainRoutes.Dashboard]: "dashboard",
+  [mainRoutes.Settings]: "settings",
+  [mainRoutes.Main]: "",
+  [mainRoutes.UserOnboard]: "onboard",
   [mainRoutes.AppView]: "app/:id",
   [mainRoutes.TestView]: "test/:id",
 };
@@ -32,6 +36,7 @@ export type AuthNavigatorParamList = {
 };
 
 export type MainNavigatorParamList = {
+  [mainRoutes.Main]: undefined;
   [mainRoutes.UserOnboard]: undefined;
   [mainRoutes.Dashboard]: undefined;
   [mainRoutes.AppView]: { id: string };
